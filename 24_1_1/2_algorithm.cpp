@@ -7,12 +7,12 @@
 #define MAX_ELEMENTS 100
 int scores[MAX_ELEMENTS];
 
-int get_max_score(int n) {//ÀÔÃâ·Â, ¸í¹é¼º, À¯ÇÑ¼º,À¯È¿¼º 
+int get_max_score(int n) {//ì…ì¶œë ¥, ëª…ë°±ì„±, ìœ í•œì„±,ìœ íš¨ì„± 
 	int i, largest;
 	largest = scores[0];
 	for (i = 1; i < n; i++) {
 		if (scores[i] > largest) {
-			largest = scores[i]; //ÃÖ°í Á¡¼ö ÀúÀå
+			largest = scores[i]; //ìµœê³  ì ìˆ˜ ì €ì¥
 		}
 	}return largest;
 }
@@ -29,7 +29,7 @@ int main(void) {
 
 	stop = clock();
 	duration = (double)(stop - start) / CLOCKS_PER_SEC;
-	printf("¼öÇà½Ã°£Àº %fÃÊ ÀÔ´Ï´Ù.\n", duration);
+	printf("ìˆ˜í–‰ì‹œê°„ì€ %fì´ˆ ì…ë‹ˆë‹¤.\n", duration);
 	return 0;
 }
 #elif num==3
@@ -37,15 +37,15 @@ int main(void) {
 #include <stdio.h>
 #include <stdlib.h>
 int factorial(int n) {
-	if (n <= 1) {	//Àç±Í
+	if (n <= 1) {	//ì¬ê·€
 		return 1;
 	}
-	else return n* factorial(n - 1); //n¹ø ÇÔ¼ö È£Ãâ
-	/*º¹±ÍÁÖ¼Ò°¡ ½Ã½ºÅÛ ½ºÅÃ¿¡ ÀúÀåµÇ°í, È£ÃâµÇ´Â ÇÔ¼ö¸¦ À§ÇÑ 
-	¸Å°³º¯¼ö¿Í Áö¿ªº¯¼ö¸¦ ½ºÅÃ¿¡¼­ ÇÒ´ç¹ŞÀ¸¹Ç·Î
-	»çÀü ÀÛ¾÷°ú ¿©ºĞÀÇ ¸Ş¸ğ¸®°¡ ÇÊ¿ä. Áï ´õ ´À¸².*/
+	else return n* factorial(n - 1); //në²ˆ í•¨ìˆ˜ í˜¸ì¶œ
+	/*ë³µê·€ì£¼ì†Œê°€ ì‹œìŠ¤í…œ ìŠ¤íƒì— ì €ì¥ë˜ê³ , í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜ë¥¼ ìœ„í•œ 
+	ë§¤ê°œë³€ìˆ˜ì™€ ì§€ì—­ë³€ìˆ˜ë¥¼ ìŠ¤íƒì—ì„œ í• ë‹¹ë°›ìœ¼ë¯€ë¡œ
+	ì‚¬ì „ ì‘ì—…ê³¼ ì—¬ë¶„ì˜ ë©”ëª¨ë¦¬ê°€ í•„ìš”. ì¦‰ ë” ëŠë¦¼.*/
 
-	int k, v = 1;	//n¹ø ¹İº¹
+	int k, v = 1;	//në²ˆ ë°˜ë³µ
 	for (k = n; k > 0; k--) {
 		v = v * k;
 		return(v);
@@ -55,26 +55,26 @@ int main(void) {
 	printf("%d", factorial(5));
 }
 
-//°ÅµìÁ¦°ö-Àç±Í°¡ ´õ ºü¸§
-double slow_power(double x, int n) {	//¹İº¹
+//ê±°ë“­ì œê³±-ì¬ê·€ê°€ ë” ë¹ ë¦„
+double slow_power(double x, int n) {	//ë°˜ë³µ
 	int i;
 	double result = 1.0;
-	for (i = 0; i < n; i++) result *= x; //x °è¼Ó °ö
+	for (i = 0; i < n; i++) result *= x; //x ê³„ì† ê³±
 	return result;
 }
 double power(double x, int n) {
 	if (n == 0) return 1;
-	else if ((n % 2) == 0) return power(x * x, n / 2); //Â¦¼ö
+	else if ((n % 2) == 0) return power(x * x, n / 2); //ì§ìˆ˜
 	else return x * power(x * x, (n - 1) / 2);
 }
 
-//ÇÇº¸³ªÄ¡ ¼ö¿­-¹İº¹ÀÌ ´õ ºü¸§
-int fib(int n) { //Àç±Í
+//í”¼ë³´ë‚˜ì¹˜ ìˆ˜ì—´-ë°˜ë³µì´ ë” ë¹ ë¦„
+int fib(int n) { //ì¬ê·€
 	if (n == 0) return 0;
 	if (n == 1) return 1;
 	return (fib(n - 1) + fib(n - 2));
 }
-int fib_iter(int n) { //¹İº¹
+int fib_iter(int n) { //ë°˜ë³µ
 	if (n == 0) return 0;
 	if (n == 1) return 1;
 
@@ -90,13 +90,13 @@ int fib_iter(int n) { //¹İº¹
 	return result;
 }
 #elif num==4
-//ÇÏ³ëÀÌ Å¾-Àç±Í°¡ ´õ ºü¸§
+//í•˜ë…¸ì´ íƒ‘-ì¬ê·€ê°€ ë” ë¹ ë¦„
 #include <stdio.h>
 void hanoi_tower(int n, char from, char tmp, char to) {
-	if (n == 1) printf("¿øÆÇ 1À» %c¿¡¼­ %c·Î ¿Å±ä´Ù. \n", from, to);
+	if (n == 1) printf("ì›íŒ 1ì„ %cì—ì„œ %cë¡œ ì˜®ê¸´ë‹¤. \n", from, to);
 	else {
 		hanoi_tower(n - 1, from, to, tmp);
-		printf("¿øÆÇ %dÀ» %c¿¡¼­ %c·Î ¿Å±ä´Ù.\n", n, from, to);
+		printf("ì›íŒ %dì„ %cì—ì„œ %cë¡œ ì˜®ê¸´ë‹¤.\n", n, from, to);
 		hanoi_tower(n - 1, tmp, from, to);
 	}
 }
